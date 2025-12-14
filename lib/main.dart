@@ -89,12 +89,24 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
+                final email = _emailController.text.trim();
+                final pass = _passController.text.trim();
+                if (email.isEmpty || pass.isEmpty) {
+                  if (!context.mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Vui lòng nhập đầy đủ Email và Mật khẩu"),
+                      backgroundColor: Colors.red, 
+                    ),
+                  );
+                  return;
+                }
                 final auth = context.read<AuthService>();
                 try {
                   if (_isLogin) {
-                    await auth.signIn(_emailController.text, _passController.text);
+                    await auth.signIn(email, pass);
                   } else {
-                    await auth.signUp(_emailController.text, _passController.text);
+                    await auth.signUp(email, pass);
                   }
                   if (!context.mounted) return;
                 } on FirebaseAuthException catch (e) {
@@ -106,6 +118,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     message = "Sai email hoặc mật khẩu.";
                   } else if (e.code == 'email-already-in-use') {
                     message = "Email này đã được đăng ký.";
+                  } else if (e.code == 'weak-password') {
+                    message = "Mật khẩu quá yếu. Vui lòng chọn mật khẩu khác.";
+                  } else if (e.code == 'invalid-email') {
+                    message = "Địa chỉ email không hợp lệ.";
                   }
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

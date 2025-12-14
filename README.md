@@ -197,7 +197,7 @@ https://drive.google.com/drive/folders/1DDYsWpLBfM8V2Ah0jITNJmPF1QtPX96h?usp=sha
 - **9/10**: Hoàn thiện kiểm thử CRUD, trạng thái, tích hợp API/CSDL; UI thân thiện.
 - **10/10**: Tối ưu hóa hoàn chỉnh, UI/UX mượt mà, CI/CD đầy đủ và ổn định.
 
-## Tự đánh giá điểm: 8/10
+## Tự đánh giá điểm: 9/10
 Sinh viên cần tự đánh giá mức độ hoàn thiện của ứng dụng và so sánh với tiêu chí đánh giá để xác định điểm cuối cùng. Điểm tự đánh giá sẽ được sử dụng như một tiêu chí tham khảo cho giảng viên đánh giá cuối cùng.
 
 Chúc các bạn hoàn thành tốt bài tập lớn và khám phá thêm nhiều kiến thức bổ ích qua dự án này!
